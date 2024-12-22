@@ -1,0 +1,22 @@
+.search {
+  all: unset;
+
+  background-color: inherit;
+  padding-block: 12px;
+  transition: border-bottom 0.3s ease-in-out;
+  caret-color: #fc4747;
+  border-bottom: 2px solid transparent;
+  font-size: 24px;
+  color: white;
+
+  &:active,
+  &:focus {
+    border-bottom: 2px lightblue solid;
+  }
+
+  &:-webkit-autofill {
+    background-color: inherit;
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: white;
+  }
+}
