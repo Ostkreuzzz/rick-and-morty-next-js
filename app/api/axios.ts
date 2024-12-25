@@ -33,10 +33,29 @@ export async function getAllCharacters() {
   }
 }
 
-export async function getCharacter(id: number | number[]) {
+export async function getLocation(id: string | string[]) {
+  try {
+    const res = await axios.get(BASE_URL.locations + `/${id}`);
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching character:", error);
+  }
+}
+
+export async function getEpisode(id: string | string[]) {
+  try {
+    const res = await axios.get(BASE_URL.episodes + `/${id}`);
+
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching character:", error);
+  }
+}
+
+export async function getCharacter(id: string | string[]) {
   try {
     const res = await axios.get(BASE_URL.characters + `/${id}`);
-    return res.data.results;
+    return res.data;
   } catch (error) {
     console.error("Error fetching character:", error);
   }

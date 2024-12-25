@@ -55,10 +55,10 @@ export default function CharactersPage() {
   }
 
   return (
-    <div className="flex flex-col gap-56 px-16 desktop:px-32 desktop:pt-24 w-full">
+    <div className="flex flex-col gap-56 px-16 desktop:px-32 desktop:pt-18 w-full">
       <div className="flex flex-col justify-between gap-32 desktop:items-center desktop:flex-row items-start">
         <Search query={query} setQuery={setQuery} />
-        <div className="flex gap-8">
+        <div className="flex gap-8 w-full">
           <Selector
             title="Gender"
             value={gender}
@@ -91,7 +91,6 @@ export default function CharactersPage() {
             id={character.id}
             status={character.status}
             species={character.species}
-            gender={character.gender}
             location={character.location.name}
             episode={character.episode[0]}
             image={character.image}

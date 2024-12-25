@@ -3,14 +3,13 @@ import { useEffect, useState } from "react";
 
 import { fetchEpisode } from "@utils/fetchEpisode";
 import styles from "../app/styles/styles.module.scss";
-import Link from "next/link";
 import classNames from "classnames";
+import Link from "next/link";
 
 interface Props {
   name: string;
   status: string;
   species: string;
-  gender: string;
   location: string;
   image: string;
   episode: string;
@@ -22,7 +21,6 @@ export default function CharacterCard({
   name,
   status,
   species,
-  gender,
   location,
   image,
   episode,
@@ -52,7 +50,7 @@ export default function CharacterCard({
         height={200}
         priority
       />
-      <div className="flex flex-col gap-8 p-16 justify-between">
+      <div className="flex flex-col tablet:gap-8 p-16 justify-between">
         <div className="items-center">
           <h2 className="text-xl font-extrabold">{name}</h2>
           <span
@@ -65,7 +63,6 @@ export default function CharacterCard({
           <span>
             {status === "unknown" ? "Unknown" : status} - {species}
           </span>
-          <p>{gender === "unknown" ? "Unknown" : gender}</p>
         </div>
 
         <div className="flex flex-col">

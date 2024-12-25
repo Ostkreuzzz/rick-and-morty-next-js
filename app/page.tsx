@@ -10,8 +10,8 @@ import {
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-16 px-8 desktop:gap-48  desktop:px-32 desktop:pt-24 w-max text-white">
-      <h2 className="text-6xl font-bold ">
+    <div className="flex flex-col gap-16 px-16 desktop:gap-48  desktop:px-32 desktop:pt-24 w-full text-white">
+      <h2 className=" text-4xl desktop:text-6xl font-extrabold">
         This is Rick and Morty API developed by
         <a className="text-red"> Ostkreuz</a>
       </h2>

@@ -19,7 +19,7 @@ export default function Search({ query, setQuery }: Props) {
         <SearchIcon className="text-white w-32 h-32" />
       </label>
       <input
-        className={`${styles.search} tablet:w-152`}
+        className={styles.search}
         placeholder="Search"
         id="input"
         value={query}
