@@ -7,8 +7,6 @@ export const metadata: Metadata = {
 };
 
 import Navigation from "../components/Navigation";
-import Search from "../components/Search";
-import Selector from "../components/Selector";
 
 export default function RootLayout({
   children,
@@ -25,13 +23,7 @@ export default function RootLayout({
           <div className="desktop:pl-32">
             <Navigation />
           </div>
-          <div className="flex flex-col gap-56 px-16 desktop:px-32 desktop:pt-24 ">
-            <div className="flex justify-between gap-24">
-              <Search />
-              <Selector />
-            </div>
-            {children}
-          </div>
+          {children}
         </div>
       </body>
     </html>

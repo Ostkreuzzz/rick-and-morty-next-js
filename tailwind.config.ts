@@ -11,7 +11,8 @@ export default {
       mobile: "320px",
       tablet: "640px",
       "tablet-large": "768px",
-      desktop: "1024px",
+      desktop: "1220px",
+      "desktop-fullscreen": "1756px",
     },
 
     colors: {
@@ -47,7 +48,9 @@ export default {
       72: "72px",
       80: "80px",
       96: "96px",
+      108: "108px",
       152: "152px",
+      220: "220px",
     },
 
     extend: {
@@ -57,10 +60,6 @@ export default {
       height: {
         "90%": "90vh",
       },
-
-      // boxShadow: {
-      //   "light-custom": "2px 2px 1px rgba(255, 255, 255, 0.07)",
-      // },
     },
   },
   plugins: [],

@@ -8,10 +8,16 @@
   border-bottom: 2px solid transparent;
   font-size: 24px;
   color: white;
+  width: 280px;
 
   &:active,
-  &:focus {
-    border-bottom: 2px lightblue solid;
+  &:focus,
+  &:hover {
+    border-bottom: 2px #5a698f solid;
+  }
+
+  &::placeholder {
+    color: #5a698f;
   }
 
   &:-webkit-autofill {
@@ -19,4 +25,25 @@
     transition: background-color 5000s ease-in-out 0s;
     -webkit-text-fill-color: white;
   }
+}
+
+.status-icon::before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  height: 12px;
+  width: 12px;
+  margin-right: 8px;
+}
+
+.status-alive::before {
+  background: green;
+}
+
+.status-dead::before {
+  background: red;
+}
+
+.status-unknown::before {
+  background: gray;
 }
