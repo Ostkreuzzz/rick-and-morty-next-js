@@ -3,9 +3,9 @@ import { Character } from "@interfaces/Character";
 interface FiltrationData {
   data: Character[];
   query: string;
-  status: string;
-  species: string[];
-  gender: string;
+  status?: string;
+  species?: string[];
+  gender?: string;
 }
 
 export default function handleCharacterFiltration({
@@ -29,7 +29,7 @@ export default function handleCharacterFiltration({
     );
   }
 
-  if (species.length) {
+  if (species?.length) {
     visibleData = visibleData.filter((character) =>
       species.includes(character.species)
     );

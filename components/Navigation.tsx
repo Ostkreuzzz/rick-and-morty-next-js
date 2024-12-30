@@ -15,7 +15,7 @@ export default function Navigation() {
 
   return (
     <div
-      className="flex justify-between items-center bg-blue w-full h-56 px-16
+      className="flex justify-between items-center bg-blue w-lvw h-56 px-24
     desktop:w-96 desktop:flex-col desktop:h-90% desktop:py-32 
     desktop:rounded-xl desktop:justify-start gap-72"
     >

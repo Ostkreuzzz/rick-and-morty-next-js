@@ -1,63 +1,51 @@
 "use client";
 
-import { Character } from "@interfaces/Character";
-
 import { useState, useEffect } from "react";
-import { Alert, Snackbar } from "@mui/material";
-
 import Search from "../../components/Search";
 import Selector from "../../components/Selector";
-import CharacterCard from "../../components/CharacterCard";
 
-import { getCharacters } from "api/axios";
+import { getLocations } from "api/axios";
 import LoadingCircular from "../../components/LoadingCircular";
+import { Location } from "@interfaces/Location";
 import PaginationControlled from "../../components/PaginationControlled";
-import {
-  gendersTypes,
-  statusesTypes,
-  speciesTypes,
-} from "@constants/selectorTypes";
 
-export default function CharactersPage() {
-  const [data, setData] = useState<Character[]>([]);
+import { Alert, Snackbar } from "@mui/material";
+import LocationCard from "../../components/LocationCard";
+import { locationTypes, dimensionTypes } from "@constants/selectorTypes";
+
+export default function LocationsPage() {
+  const [data, setData] = useState<Location[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [query, setQuery] = useState("");
+  const [type, setType] = useState("");
+  const [dimension, setDimension] = useState("");
+
+  const [page, setPage] = useState(1);
   const [error, setError] = useState({
     type: "",
     isError: false,
   });
-
-  const [query, setQuery] = useState("");
-  const [gender, setGender] = useState("");
-  const [status, setStatus] = useState("");
-  const [species, setSpecies] = useState("");
-  const [page, setPage] = useState(1);
   const [pageData, setPageData] = useState({
     charactersAmount: 0,
     pagesAmount: 0,
   });
 
   useEffect(() => {
-    const fetchFilteredCharacters = async () => {
+    const fetchEpisodes = async () => {
       setIsLoading(true);
       try {
-        const { characters, totalCharacters, totalPages } = await getCharacters(
+        const { locations, totalLocations, totalPages } = await getLocations(
+          page,
           query,
-          status,
-          species,
-          gender,
-          page
+          type,
+          dimension
         );
-
-        setData(characters);
+        setData(locations);
         setPageData({
-          charactersAmount: totalCharacters,
+          charactersAmount: totalLocations,
           pagesAmount: totalPages,
         });
-        setError({
-          type: "",
-          isError: false,
-        });
-      } catch (err) {
+      } catch {
         setError({
           type: "Failed to load. Please try again.",
           isError: true,
@@ -67,11 +55,15 @@ export default function CharactersPage() {
       }
     };
 
-    fetchFilteredCharacters();
-  }, [query, status, species, gender, page]);
+    fetchEpisodes();
+  }, [query, page, type, dimension]);
+
+  if (isLoading) {
+    return <LoadingCircular />;
+  }
 
   return (
-    <div className="flex flex-col gap-56 px-16 desktop:px-32 desktop:pt-18 w-full">
+    <div className="flex flex-col gap-56 px-16 desktop:px-32 desktop:pt-22 w-full">
       {error.isError && (
         <Snackbar
           open={error.isError}
@@ -102,42 +94,36 @@ export default function CharactersPage() {
         <Search query={query} setQuery={setQuery} />
         <div className="flex gap-16 w-full">
           <Selector
-            title="Gender"
-            value={gender}
-            setValue={setGender}
-            items={gendersTypes}
+            title="Type"
+            value={type}
+            setValue={setType}
+            items={locationTypes}
           />
           <Selector
-            title="Status"
-            value={status}
-            setValue={setStatus}
-            items={statusesTypes}
-          />
-          <Selector
-            title="Species"
-            value={species}
-            setValue={setSpecies}
-            items={speciesTypes}
+            title="Dimension"
+            value={dimension}
+            setValue={setDimension}
+            items={dimensionTypes}
           />
         </div>
       </div>
+
       {isLoading ? (
         <LoadingCircular />
       ) : data.length > 0 ? (
         <div
-          className="grid grid-cols-1 gap-18 tablet-large:grid-cols-1 
-      desktop:grid-cols-2 desktop-fullscreen:gap-12 desktop-fullscreen:grid-cols-3"
+          className="grid grid-cols-1 gap-12 tablet-large:grid-cols-1 
+        desktop:grid-cols-2 desktop:gap-16  
+      desktop-fullscreen:gap-16 desktop-fullscreen:grid-cols-3"
         >
-          {data.map((character) => (
-            <CharacterCard
-              name={character.name}
-              key={character.id}
-              id={character.id}
-              status={character.status}
-              species={character.species}
-              location={character.location.name}
-              episode={character.episode[0]}
-              image={character.image}
+          {data.map((location) => (
+            <LocationCard
+              name={location.name}
+              key={location.id}
+              id={location.id}
+              type={location.type}
+              dimension={location.dimension}
+              residents={location.residents}
             />
           ))}
         </div>

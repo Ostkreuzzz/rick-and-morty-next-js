@@ -19,13 +19,14 @@ export default function Selector({ title, value, items, setValue }: Props) {
 
   return (
     <FormControl
-      className="w-108 tablet:w-152 text-light-blue font-primary"
+      className="h-fit w-full text-light-blue font-primary"
       sx={{
         "& .MuiOutlinedInput-notchedOutline": {
           borderColor: "#5A698F",
+          transition: "border-color 300ms ease",
         },
         "&:hover .MuiOutlinedInput-notchedOutline": {
-          borderColor: "#FC4747",
+          borderColor: "#FC4747 !important",
         },
         "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
           borderColor: "#FC4747",

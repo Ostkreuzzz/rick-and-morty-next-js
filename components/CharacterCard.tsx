@@ -21,7 +21,7 @@ export default function CharacterCard({
   name,
   status,
   species,
-  location,
+  location = "Unknown",
   image,
   episode,
 }: Props) {
@@ -37,9 +37,9 @@ export default function CharacterCard({
 
   return (
     <Link
-      className="flex justify-start  text-white h-220 
-      rounded bg-blue hover:scale-105 duration-300 hover:z-10"
-      href={`characters/${id}`}
+      className="flex justify-start  text-white desktop:h-220 h-220
+      rounded-lg bg-blue hover:scale-105 duration-300 hover:z-10 border-blue border-2 hover:border-red"
+      href={`/characters/${id}`}
       aria-label={`Navigate to character ${id}`}
     >
       <Image

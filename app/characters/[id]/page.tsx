@@ -10,13 +10,13 @@ import Image from "next/image";
 
 import styles from "../../styles/styles.module.scss";
 import classNames from "classnames";
+import EpisodesList from "../../../components/EpisodesList";
+import LoadingCircular from "../../../components/LoadingCircular";
 
 export default function CharacterPage() {
   const [character, setCharacter] = useState<Character | null>(null);
   const [episodes, setEpisodes] = useState<Episode[]>([]);
   const pathname = usePathname();
-
-  console.log(episodes);
 
   const characterID = pathname.split("/").pop() || "0";
 
@@ -45,12 +45,12 @@ export default function CharacterPage() {
     fetchEpisodes();
   }, [character]);
 
-  if (!character) return <div>Loading...</div>;
+  if (!character) return <LoadingCircular />;
 
   return (
-    <div className="flex flex-col gap-56 px-16 desktop:px-32 desktop:pt-16 w-full">
+    <div className="flex flex-col gap-56 px-16 desktop:px-32 desktop:pt-16 w-fit">
       <div className="flex justify-center tablet:justify-start  text-white rounded bg-blue ">
-        <div className="flex flex-col tablet:flex-row gap-22 tablet:gap-32 p-16 justify-start">
+        <div className="flex flex-col tablet:flex-row gap-24 tablet:gap-48 p-16 justify-start">
           <Image
             className="flex justify-start rounded w-[200] tablet:object-contain self-start"
             alt={`${character.name} image`}
@@ -87,9 +87,16 @@ export default function CharacterPage() {
               </div>
             </div>
 
-            <div className="flex flex-col">
-              <span className="text-grey text-xl">Episodes:</span>
-              <span className="text-lg">{character.episode.length}</span>
+            <div className="flex gap-32">
+              <div className="flex flex-col">
+                <span className="text-grey text-xl">Episodes:</span>
+                <span className="text-lg">{character.episode.length}</span>
+              </div>
+
+              <div className="flex flex-col">
+                <span className="text-grey text-xl">Type:</span>
+                <span className="text-lg">{character.type || "None"}</span>
+              </div>
             </div>
 
             <div className="flex flex-col">
@@ -101,42 +108,16 @@ export default function CharacterPage() {
               <span className="text-grey text-xl">Last location:</span>
               <span className="text-lg">{character.location.name}</span>
             </div>
-
-            {/* 
-          <div className="flex flex-col">
-            <span className="text-grey">First seen in:</span>
-            <span> {characterepisodeName}</span>
-          </div> */}
           </div>
 
-          <div className="flex flex-col tablet:gap-8 justify-start">
-            <h2 className="desktop:text-6xl text-4xl font-bold text-red">
+          <div className="flex flex-col gap-16 justify-start">
+            <h3 className="desktop:text-6xl text-4xl font-bold text-red">
               Episodes:
-            </h2>
+            </h3>
             {episodes.length === 0 ? (
-              <p>Loading episodes...</p>
+              <LoadingCircular />
             ) : (
-              episodes.map((episode) => (
-                <div
-                  key={episode.id}
-                  className="flex flex-col gap-4 border-2 border-red p-8 rounded"
-                >
-                  <div className="flex gap-8">
-                    <span>{episode.id}</span>
-                    <h2>{episode.name}</h2>
-                  </div>
-
-                  <div className="flex gap-8">
-                    <span>Code:</span>
-                    <span>{episode.episode}</span>
-                  </div>
-
-                  <div className="flex gap-8">
-                    <span>Aired:</span>
-                    <span>{episode.air_date}</span>
-                  </div>
-                </div>
-              ))
+              <EpisodesList episodes={episodes} />
             )}
           </div>
         </div>

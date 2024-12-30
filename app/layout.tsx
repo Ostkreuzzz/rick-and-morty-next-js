@@ -18,7 +18,7 @@ export default function RootLayout({
       <body>
         <div
           className=" flex justify-between flex-col gap-24 desktop:gap-0
-            desktop:flex-row desktop:py-32  desktop:justify-start"
+            desktop:flex-row desktop:py-32  desktop:justify-start items-center desktop:items-start"
         >
           <div className="desktop:pl-32">
             <Navigation />

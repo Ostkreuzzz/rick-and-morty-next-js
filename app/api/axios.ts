@@ -6,30 +6,66 @@ const BASE_URL = {
   episodes: "https://rickandmortyapi.com/api/episode",
 };
 
-export async function getAllEpisodes() {
+export async function getEpisodes(page: number, name?: string) {
   try {
-    const res = await axios.get(BASE_URL.episodes);
-    return res.data.results;
+    let query = "";
+
+    if (name) query += `name=${encodeURIComponent(name)}&`;
+    if (page) query += `page=${encodeURIComponent(page)}`;
+
+    const url = `${BASE_URL.episodes}/?${query}`;
+    const res = await axios.get(url);
+
+    const episodes = res.data.results;
+    const totalEpisodes = res.data.info.count;
+    const totalPages = res.data.info.pages;
+
+    return {
+      episodes,
+      totalEpisodes,
+      totalPages,
+    };
   } catch (error) {
-    console.error("Error fetching episodes:", error);
+    return {
+      episodes: [],
+      totalEpisodes: 0,
+      totalPages: 0,
+    };
   }
 }
 
-export async function getAllLocations() {
+export async function getLocations(
+  page: number,
+  name?: string,
+  type?: string,
+  dimension?: string
+) {
   try {
-    const res = await axios.get(BASE_URL.locations);
-    return res.data.results;
-  } catch (error) {
-    console.error("Error fetching locations:", error);
-  }
-}
+    let query = "";
 
-export async function getAllCharacters() {
-  try {
-    const res = await axios.get(BASE_URL.characters);
-    return res.data.results;
+    if (name) query += `name=${encodeURIComponent(name)}&`;
+    if (type) query += `type=${encodeURIComponent(type)}&`;
+    if (dimension) query += `type=${encodeURIComponent(dimension)}&`;
+    if (page) query += `page=${encodeURIComponent(page)}`;
+
+    const url = `${BASE_URL.locations}/?${query}`;
+    const res = await axios.get(url);
+
+    const locations = res.data.results;
+    const totalLocations = res.data.info.count;
+    const totalPages = res.data.info.pages;
+
+    return {
+      locations,
+      totalLocations,
+      totalPages,
+    };
   } catch (error) {
-    console.error("Error fetching characters:", error);
+    return {
+      locations: [],
+      totalLocations: 0,
+      totalPages: 0,
+    };
   }
 }
 
@@ -58,6 +94,49 @@ export async function getCharacter(id: string | string[]) {
     return res.data;
   } catch (error) {
     console.error("Error fetching character:", error);
+  }
+}
+
+export async function getCharacters(
+  name: string,
+  status: string,
+  species: string,
+  gender: string,
+  // type?: string,
+  page: number
+) {
+  try {
+    let query = "";
+
+    if (name) query += `name=${encodeURIComponent(name)}&`;
+    if (status) query += `status=${encodeURIComponent(status)}&`;
+    if (species) query += `species=${encodeURIComponent(species)}&`;
+    // if (type) query += `type=${encodeURIComponent(type)}&`;
+    if (gender) query += `gender=${encodeURIComponent(gender)}&`;
+    if (page) query += `page=${encodeURIComponent(page)}`;
+
+    if (query.endsWith("&")) {
+      query = query.slice(0, -1);
+    }
+
+    const url = `${BASE_URL.characters}/?${query}`;
+    const res = await axios.get(url);
+
+    const characters = res.data.results;
+    const totalCharacters = res.data.info.count;
+    const totalPages = res.data.info.pages;
+
+    return {
+      characters,
+      totalCharacters,
+      totalPages,
+    };
+  } catch (error) {
+    return {
+      characters: [],
+      totalCharacters: 0,
+      totalPages: 0,
+    };
   }
 }
 

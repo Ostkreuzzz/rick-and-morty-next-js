@@ -51,6 +51,7 @@ export default {
       108: "108px",
       152: "152px",
       220: "220px",
+      240: "240px",
     },
 
     extend: {
