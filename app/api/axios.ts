@@ -45,7 +45,7 @@ export async function getLocations(
 
     if (name) query += `name=${encodeURIComponent(name)}&`;
     if (type) query += `type=${encodeURIComponent(type)}&`;
-    if (dimension) query += `type=${encodeURIComponent(dimension)}&`;
+    if (dimension) query += `dimension=${encodeURIComponent(dimension)}&`;
     if (page) query += `page=${encodeURIComponent(page)}`;
 
     const url = `${BASE_URL.locations}/?${query}`;

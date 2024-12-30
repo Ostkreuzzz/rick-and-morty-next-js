@@ -40,19 +40,21 @@ export default function EpisodesList({ episodes }: Props) {
                   primary={
                     <Link href={`episodes/${episode.id}`}>
                       <div className="font-primary">
-                        <h2>{`№ ${episode.id} ${episode.name}`}</h2>
+                        <h2 className="text-lg">{`№ ${episode.id} ${episode.name}`}</h2>
                       </div>
                       <div className="flex gap-8 font-primary">
-                        <span className="text-grey ">Code:</span>
-                        <span>{episode.episode}</span>
+                        <span className="text-grey text-xl">Code:</span>
+                        <span className="text-lg">{episode.episode}</span>
                       </div>
                       <div className="flex gap-8 font-primary">
-                        <span className="text-grey">Aired:</span>
-                        <span>{episode.air_date}</span>
+                        <span className="text-grey text-xl">Aired:</span>
+                        <span className="text-lg">{episode.air_date}</span>
                       </div>
                       <div className="flex gap-8 font-primary">
-                        <span className="text-grey">Characters:</span>
-                        <span>{episode.characters.length}</span>
+                        <span className="text-grey text-xl">Characters:</span>
+                        <span className="text-lg">
+                          {episode.characters.length}
+                        </span>
                       </div>
                     </Link>
                   }

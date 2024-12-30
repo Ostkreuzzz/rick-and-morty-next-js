@@ -35,7 +35,6 @@ const dimensionTypes = [
   "Testicle Monster Dimension",
   "Dimension C-500A",
   "Eric Stoltz Mask Dimension",
-  "Fantasy Dimension",
   "Dimension J-22",
 ];
 

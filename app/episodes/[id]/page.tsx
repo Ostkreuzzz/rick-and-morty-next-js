@@ -45,7 +45,7 @@ export default function CharacterPage() {
 
   return (
     <div className="flex flex-col gap-56 px-16 desktop:px-32 w-fit">
-      <div className="flex justify-center tablet:justify-start text-white rounded-lgbg-blue ">
+      <div className="flex justify-center tablet:justify-start text-white rounded-lg bg-blue ">
         <div className="flex flex-col gap-22 tablet:gap-24 p-32 justify-start">
           <div className="desktop:text-6xl text-4xl font-extrabold text-red">
             <h2>{`№ ${episode.id} ${episode.name}`}</h2>
