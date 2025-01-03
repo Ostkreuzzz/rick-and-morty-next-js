@@ -29,8 +29,8 @@ export default function LocationPage() {
   useEffect(() => {
     if (!location) return;
 
-    const charactersID = location.residents.map(
-      (characterUrl) => characterUrl.split("/").pop() || "0"
+    const charactersID = location.residents.map((characterUrl) =>
+      Number(characterUrl.split("/").pop() || "0")
     );
 
     const fetchCharacters = async () => {

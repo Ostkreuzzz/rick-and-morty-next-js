@@ -88,9 +88,11 @@ export async function getEpisode(id: string | string[]) {
   }
 }
 
-export async function getCharacter(id: string | string[]) {
+export async function getCharacter(id: number | number[]) {
   try {
+    console.log(BASE_URL.characters + `/${id}`);
     const res = await axios.get(BASE_URL.characters + `/${id}`);
+
     return res.data;
   } catch (error) {
     console.error("Error fetching character:", error);
@@ -102,7 +104,6 @@ export async function getCharacters(
   status: string,
   species: string,
   gender: string,
-  // type?: string,
   page: number
 ) {
   try {
@@ -111,7 +112,6 @@ export async function getCharacters(
     if (name) query += `name=${encodeURIComponent(name)}&`;
     if (status) query += `status=${encodeURIComponent(status)}&`;
     if (species) query += `species=${encodeURIComponent(species)}&`;
-    // if (type) query += `type=${encodeURIComponent(type)}&`;
     if (gender) query += `gender=${encodeURIComponent(gender)}&`;
     if (page) query += `page=${encodeURIComponent(page)}`;
 

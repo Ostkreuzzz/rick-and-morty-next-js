@@ -1,0 +1,46 @@
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./app/styles/styles.module.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_search__XaNIS {
+  all: unset;
+  background-color: inherit;
+  padding-block: 12px;
+  transition: border-bottom 0.3s ease-in-out;
+  caret-color: #fc4747;
+  border-bottom: 2px solid transparent;
+  font-size: 24px;
+  color: white;
+  width: 100%;
+}
+.styles_search__XaNIS:active, .styles_search__XaNIS:focus, .styles_search__XaNIS:hover {
+  border-bottom: 2px #5a698f solid;
+}
+.styles_search__XaNIS::placeholder {
+  color: #5a698f;
+}
+.styles_search__XaNIS:-webkit-autofill {
+  background-color: inherit;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: white;
+}
+
+.styles_status-icon__71nqL::before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  height: 12px;
+  width: 12px;
+  margin-right: 8px;
+}
+
+.styles_status-alive__BZBcC::before {
+  background: green;
+}
+
+.styles_status-dead__UH73H::before {
+  background: red;
+}
+
+.styles_status-unknown__Ib8XQ::before {
+  background: gray;
+}

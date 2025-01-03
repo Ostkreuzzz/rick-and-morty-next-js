@@ -16,7 +16,13 @@ export default function Search({ query, setQuery }: Props) {
   return (
     <div className="flex justify-start gap-16 items-center h-48">
       <label htmlFor="input">
-        <SearchIcon className="text-white w-32 h-32" />
+        <SearchIcon
+          sx={{
+            width: "32px",
+            height: "32px",
+          }}
+          className="text-white"
+        />
       </label>
       <input
         className={styles.search}

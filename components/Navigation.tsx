@@ -6,6 +6,7 @@ import {
   PeopleAlt,
   GpsFixed,
   DataSaverOff,
+  Bookmark,
 } from "@mui/icons-material";
 import Link from "next/link";
 import cn from "classnames";
@@ -49,6 +50,16 @@ export default function Navigation() {
               className={cn(
                 "hover:text-white transition-all duration-300 desktop:w-32 desktop:h-32",
                 { "text-white": pathname === "/locations" }
+              )}
+            />
+          </Link>
+        </li>
+        <li>
+          <Link href="/saved">
+            <Bookmark
+              className={cn(
+                "hover:text-white transition-all duration-300 desktop:w-32 desktop:h-32",
+                { "text-white": pathname === "/saved" }
               )}
             />
           </Link>

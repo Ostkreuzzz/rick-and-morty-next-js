@@ -29,8 +29,8 @@ export default function CharacterPage() {
   useEffect(() => {
     if (!episode) return;
 
-    const charactersID = episode.characters.map(
-      (characterUrl) => characterUrl.split("/").pop() || "0"
+    const charactersID = episode.characters.map((characterUrl) =>
+      Number(characterUrl.split("/").pop() || "0")
     );
 
     const fetchCharacters = async () => {

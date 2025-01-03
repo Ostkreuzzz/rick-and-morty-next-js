@@ -20,7 +20,7 @@ export default function EpisodesList({ episodes }: Props) {
           sx={{
             bgcolor: "#161d2f",
             overflow: "auto",
-            maxHeight: 380,
+            maxHeight: 385,
             fontFamily: "inherit",
             "& ul": { padding: 0 },
           }}
@@ -38,7 +38,7 @@ export default function EpisodesList({ episodes }: Props) {
               >
                 <ListItemText
                   primary={
-                    <Link href={`episodes/${episode.id}`}>
+                    <Link href={`/episodes/${episode.id}`}>
                       <div className="font-primary">
                         <h2 className="text-lg">{`№ ${episode.id} ${episode.name}`}</h2>
                       </div>

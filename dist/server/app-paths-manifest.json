@@ -1,1 +1,8 @@
-{}
+{
+  "/characters/page": "app/characters/page.js",
+  "/episodes/page": "app/episodes/page.js",
+  "/page": "app/page.js",
+  "/characters/[id]/page": "app/characters/[id]/page.js",
+  "/locations/page": "app/locations/page.js",
+  "/locations/[id]/page": "app/locations/[id]/page.js"
+}

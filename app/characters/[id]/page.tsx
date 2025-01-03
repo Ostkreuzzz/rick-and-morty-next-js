@@ -18,7 +18,7 @@ export default function CharacterPage() {
   const [episodes, setEpisodes] = useState<Episode[]>([]);
   const pathname = usePathname();
 
-  const characterID = pathname.split("/").pop() || "0";
+  const characterID = Number(pathname.split("/").pop() || "0");
 
   useEffect(() => {
     const fetchCharacter = async () => {
