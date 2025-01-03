@@ -40,7 +40,7 @@ Welcome to the **Rick and Morty API Project**, developed by **Ostkreuz**! This a
 
 ### Screenshot
 
-![](preview.jpg)
+![](preview.png)
 
 ---
 
